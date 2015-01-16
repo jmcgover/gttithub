@@ -35,3 +35,24 @@ javac *.java && java SchoolLookup
             (__)\       )\/\
                 ||----w |
                 ||     ||
+ ______________________________________ 
+/ The Official MBA Handbook on doing   \
+| company business on an airplane:     |
+|                                      |
+| Do not work openly on top-secret     |
+| company cost documents unless        |
+|                                      |
+| you have previously ascertained that |
+| the passenger next to you            |
+|                                      |
+| is blind, a rock musician on         |
+| mood-ameliorating drugs, or the      |
+|                                      |
+| unfortunate possessor of a           |
+\ forty-seventh chromosome.            /
+ -------------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
