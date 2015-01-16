@@ -2,8 +2,7 @@ gtithub
 =======
 
 365 Database
-Lab 1
-Chris Hunt
+Lab 1 Part II
 Jeff McGovern
 
 A small scale implementation of a school's student database written in Java.
