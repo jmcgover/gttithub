@@ -68,8 +68,15 @@ public class StudentTeacher implements Comparable<StudentTeacher>{
             this.getTeachersFirst());
    }
 
-   // Overloaded compareTo method for Student object.
+   // compareTo method for Student object.
    public int compareTo(StudentTeacher other){
       return this.student.compareTo(other.student);
+   }
+
+   public Teacher getTeacher(){
+      return this.teacher;
+   }
+   public Student getStudent(){
+      return this.student;
    }
 }

@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.List;
 import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class DBMS {
@@ -139,5 +140,25 @@ public class DBMS {
             }
         }
         return rtn; 
+    }
+    public List<Teacher> teacherRoomSearch(int classroom){
+       List<Teacher> rtn = new LinkedList<Teacher>();
+       for (Teacher teacher : this.teachers) {
+          if (teacher.getClassroom() == classroom) {
+             rtn.add(teacher);
+          }
+       }
+       return rtn;
+    }
+    public List<Teacher> teacherGradeSearch(int grade){
+       HashMap<String, Teacher> gradeTeachers = new HashMap<String, Teacher>();
+       for (StudentTeacher record : this.mergedRecords) {
+          if (record.getGrade() == grade) {
+             Teacher teacher = record.getTeacher();
+             gradeTeachers.put(teacher.getKey(),teacher);
+          }
+       }
+       List<Teacher> rtn = new LinkedList<Teacher>(gradeTeachers.values());
+       return rtn;
     }
 }

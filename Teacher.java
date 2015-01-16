@@ -2,6 +2,7 @@ public class Teacher implements Comparable<Teacher> {
    private String last;
    private String first;
    private int classroom; 
+   private String key;
 
    public Teacher (String last, String first, int classroom) {
       this.last = last;
@@ -13,6 +14,7 @@ public class Teacher implements Comparable<Teacher> {
       this.last = inputLine[0];
       this.first = inputLine[1];
       this.classroom = Integer.parseInt(inputLine[2]);
+      this.key = this.last + "," + this.first + ","  + this.classroom;
    }
 
    public String getLast(){
@@ -33,8 +35,16 @@ public class Teacher implements Comparable<Teacher> {
       if (this.classroom != ((Teacher)other).classroom) return false;
       return true;
    }
+   // Key for hashing and retrieval (if necessary)
+   public String getKey(){
+      return this.key;
+   }
+   // Overloaded hashing function
+   public int hashCode(){
+      return this.key.hashCode();
+   }
 
-    // Overloaded compareTo method for Student object.
+    // compareTo method for Teacher  object.
     public int compareTo(Teacher other){
         int comp = this.last.compareTo(other.last);
         if (comp == 0) {

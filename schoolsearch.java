@@ -18,6 +18,8 @@ public class schoolsearch {
             "C[lassroom]: <number>\n" + 
             "G[rade]: <number>\n" +
             "B[us]: <number>\n" + 
+            "T[eacher]C[lassroom]: <number>\n" + 
+            "T[eacher]G[rade]: <number>\n" + 
             "Q[uit]\n");
    }
 
@@ -161,6 +163,29 @@ public class schoolsearch {
       }
    }
 
+   // Prints last name and first name for each Teacher in |list|.
+   private static void printTeacherNames(List<Teacher> list) {
+      String format = "";
+      int lastChars = 0;
+      int firstChars = 0;
+
+      // Finds max character count for each to print in alignment.
+      for (Teacher teacher : list) {
+         lastChars = max(lastChars, teacher.getLast().length());
+         firstChars = max(firstChars, teacher.getFirst().length());
+      }
+
+      // Builds format string accordingly.
+      format = "Teacher: %" + lastChars + "s, %" + firstChars + "s\n";
+
+      // Prints formatted output to console.
+      for (Teacher teacher : list) {
+         System.out.printf(format, 
+               teacher.getLast(),
+               teacher.getFirst());
+      }
+   }
+
    // Prints last name, first name, and class for each StudentTeacher in |list|.
    private static void printStudentClasses(List<StudentTeacher> list) {
       String format = "";
@@ -221,6 +246,7 @@ public class schoolsearch {
       printSplash();
 
       List<StudentTeacher> results = null;
+      List<Teacher> teacherResults = null;
       long startTime = 0;
       long totalTime = 0;
 
@@ -307,6 +333,30 @@ public class schoolsearch {
                      database.gradeSearch(Integer.parseInt(inputs[1]));
                   totalTime = System.currentTimeMillis() - startTime;
                   printStudentNames(results);
+                     }
+               // If a user wanted to lookup all TEACHERS by CLASSROOM 
+               else if (inputs[0].equalsIgnoreCase("TC:") || 
+                     inputs[0].equalsIgnoreCase("TeacherC:") ||
+                     inputs[0].equalsIgnoreCase("TClassroom:") ||
+                     inputs[0].equalsIgnoreCase("TeacherClassroom:")) {
+
+                  startTime = System.currentTimeMillis();
+                  teacherResults = 
+                     database.teacherRoomSearch(Integer.parseInt(inputs[1]));
+                  totalTime = System.currentTimeMillis() - startTime;
+                  printTeacherNames(teacherResults);
+                     }
+               // If a user wanted to lookup all TEACHERS by GRADE 
+               else if (inputs[0].equalsIgnoreCase("TG:") || 
+                     inputs[0].equalsIgnoreCase("TeacherG:") ||
+                     inputs[0].equalsIgnoreCase("TGrade:") ||
+                     inputs[0].equalsIgnoreCase("TeacherGrade:")) {
+
+                  startTime = System.currentTimeMillis();
+                  teacherResults = 
+                     database.teacherGradeSearch(Integer.parseInt(inputs[1]));
+                  totalTime = System.currentTimeMillis() - startTime;
+                  printTeacherNames(teacherResults);
                      }
                // Secret
                else if (inputs[0].equalsIgnoreCase("a") || 
